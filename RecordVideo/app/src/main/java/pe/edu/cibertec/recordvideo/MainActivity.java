@@ -3,6 +3,7 @@ package pe.edu.cibertec.recordvideo;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,7 +48,12 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_VIDEO_CAPTURE && requestCode == RESULT_OK) {
             Uri videoUri = data.getData();
             vvVideo.setVideoURI(videoUri);
-
+            vvVideo.start();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
